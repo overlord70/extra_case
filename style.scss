@@ -1,150 +1,213 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12&family=Raleway:wght@700&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Nunito Sans", sans-serif;
+// @import "normalize.css";
+
+@font-face {
+  font-family: "Geist Sans";
+  src: url("https://assets.codepen.io/605876/GeistVF.ttf") format("truetype");
 }
+
+:root {
+	--bg: hsl(246 44% 7%);
+	--border: hsl(280 10% 50% / 1);
+	--card: hsl(237 36% 10%);
+	--color: hsl(240 18% 80%);
+	--border-width: 2px;
+	--border-radius: 12px;
+	--gradient: conic-gradient(from 180deg at 50% 70%,hsla(0,0%,98%,1) 0deg,#eec32d 72.0000010728836deg,#ec4b4b 144.0000021457672deg,#709ab9 216.00000858306885deg,#4dffbf 288.0000042915344deg,hsla(0,0%,98%,1) 1turn);
+}
+
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+@property --start {
+	syntax: '<number>';
+	inherits: true;
+	initial-value: 0;
+}
+
 body {
-  background: #fff;
-}
-main {
-  position: relative;
-  width: calc(min(90rem, 90%));
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-  min-height: 100svh;
-  column-gap: 3rem;
-  padding-block: min(20vh, 3rem);
-}
-.swiper {
-  width: 100%;
-  padding: 1.875rem 0;
-}
-.swiper-slide {
-  width: 18.75rem;
-  height: 35rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: self-start;
-  box-shadow: 0.063rem 0.5rem 1.25rem hsl(0deg 0% 0% / 12.16%);
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-
-  &-img {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    transform: rotate(180deg);
-    line-height: 0;
-    bottom: -0.063rem;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-
-    img {
-      width: 100%;
-      height: 100%;
-      transition: 0.3s ease-in-out;
-      transform: rotate(-180deg);
-    }
-
-    svg {
-      position: relative;
-      display: none;
-      width: calc(300% + 1.3px);
-      height: 5rem;
-      transform: rotateY(180deg);
-    }
-    .shape-fill {
-      fill: #ffffff;
-    }
-  }
-
-  &-content {
-    background: #fff;
-    padding: 0 1.65rem;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    width: 100%;
-
-    > div {
-      transform: translateY(-1.25rem);
-    }
-
-    h2 {
-      color: white;
-      text-shadow: 3px 3px 3px black;
-      font-family: "Raleway", sans-serif;
-      font-weight: 700;
-      font-size: 1.4rem;
-      line-height: 1.4;
-      margin-bottom: 0.425rem;
-      text-transform: capitalize;
-      letter-spacing: 0.02rem;
-    }
-
-    p {
-      color: #000;
-      line-height: 1.6;
-      font-size: 0.9rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .show-more {
-      width: 3.125rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #24aad9;
-      border-radius: 50%;
-      box-shadow: 0px 0.125rem 0.875rem #24aad96b;
-      margin-top: 1em;
-      margin-bottom: 0.2em;
-      height: 0;
-      opacity: 0;
-      transition: opacity 0.3s ease-in;
-      margin-left: auto;
-
-      &:hover {
-        background: #1184ac;
-      }
-
-      svg {
-        width: 1.75rem;
-        color: #fff;
-      }
-    }
-  }
+	background: var(--bg);
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	font-family:  "Geist Sans", "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+	font-weight: 70;
+	color: var(--color);
 }
 
-.swiper-slide-active:hover img {
-  transform: scale(1.2) rotate(-185deg);
+.container {
+	--spread: 60;
+	display: flex;
+	flex-wrap: wrap;
+  flex-direction: var(--direction);
+	gap: calc(var(--gap) * 1px);
+	margin: 0 auto;
+	justify-content: center;
+	place-items: center;
+	position: relative;
+	padding: 2rem;
+  touch-action: none;
 }
 
-.swiper-slide-active:hover .show-more {
-  opacity: 1;
-  height: 3.125rem;
+article {
+	--active: 0.15;
+	--start: 0;
+	height: 100%;
+	background: var(--card);
+	padding: 2rem;
+	aspect-ratio: 330 / 400;
+	border-radius: var(--border-radius);
+	min-width: 280px;
+	max-width: 280px;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	position: relative;
 }
 
-.swiper-slide-active:hover p {
-  display: block;
-  overflow: visible;
+article:is(:hover, :focus-visible) {
+  z-index: 2;
 }
 
-.swiper-3d .swiper-slide-shadow-left,
-.swiper-3d .swiper-slide-shadow-right {
-  background-image: none;
+.glows {
+	pointer-events: none;
+	position: absolute;
+	inset: 0;
+	filter: blur(calc(var(--blur) * 1px));
 }
 
-@media screen and (min-width: 93.75rem) {
-  .swiper {
-    width: 85%;
-  }
+.glows::after,
+.glows::before {
+  --alpha: 0;
+  content: "";
+  background: var(--gradient);
+  background-attachment: fixed;
+  position: absolute;
+	inset: -5px;
+  border: 10px solid transparent;
+  border-radius: var(--border-radius);
+  mask:
+  	linear-gradient(#0000, #0000),
+  	conic-gradient(from calc((var(--start) - (var(--spread) * 0.5)) * 1deg), #000 0deg, #fff, #0000 calc(var(--spread) * 1deg));
+  mask-composite: intersect;
+  mask-clip: padding-box, border-box;
+  opacity: var(--active);
+  transition: opacity 1s;
+}
+
+article::before {
+	position: absolute;
+	inset: 0;
+	border: var(--border-width) solid transparent;
+	content: "";
+	border-radius: var(--border-radius);
+	pointer-events: none;
+	background: var(--border);
+  background-attachment: fixed;
+  border-radius: var(--border-radius);
+  mask:
+  	linear-gradient(#0000, #0000),
+  	conic-gradient(
+  		from calc(((var(--start) + (var(--spread) * 0.25)) - (var(--spread) * 1.5)) * 1deg),
+  		hsl(0 0% 100% / 0.15) 0deg,
+  		white,
+  		hsl(0 0% 100% / 0.15) calc(var(--spread) * 2.5deg));
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+  opacity: var(--active);
+  transition: opacity 1s;
+}
+
+article::after {
+	--bg-size: 100%;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  background: var(--gradient);
+  background-attachment: fixed;
+  border-radius: var(--border-radius);
+  opacity: var(--active, 0);
+  transition: opacity 1s;
+  --alpha: 0;
+  inset: 0;
+  border: var(--border-width) solid transparent;
+  mask:
+  	linear-gradient(#0000, #0000),
+  	conic-gradient(from calc(((var(--start) + (var(--spread) * 0.25)) - (var(--spread) * 0.5)) * 1deg), #0000 0deg, #fff, #0000 calc(var(--spread) * 0.5deg));
+  filter: brightness(1.5);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+}
+
+.badge {
+	border: 2px solid var(--border);
+	align-self: start;
+	border-radius: 100px;
+	padding: 0.5rem 0.7rem;
+	font-size: 0.675rem;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-weight: 50;
+}
+
+a {
+	color: var(--color);
+	text-decoration: none;
+	opacity: 0.5;
+	display: inline-block;
+	align-self: start;
+	transition: opacity 0.2s;
+}
+
+a:is(:hover, :focus-visible) {
+	opacity: 1;
+}
+
+article h2 {
+	margin: 0;
+	padding: 1rem 0;
+	font-weight: 100;
+	font-size: 1.5rem;
+}
+
+.header {
+	position: relative;
+	flex: 1;
+	display: flex;
+	align-items: center;
+}
+
+.header svg {
+	--count: 4;
+	width: 106px;
+}
+
+.header svg:nth-of-type(2),
+.header svg:nth-of-type(3),
+.header svg:nth-of-type(4) {
+	position: absolute;
+	z-index: calc(var(--count) - var(--index));
+	translate: calc(var(--index) * 30%) 0;
+	opacity: calc(var(--count) / (2 * (var(--index) * 10)));
+}
+
+.header svg:nth-of-type(2) {
+	--index: 1;
+}
+.header svg:nth-of-type(3) {
+	--index: 2;
+}
+.header svg:nth-of-type(4) {
+	--index: 3;
+}
+
+.badge svg {
+	width: 16px;
+}
+
+.dg.ac {
+  z-index: 99999 !important;
 }
