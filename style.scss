@@ -1,0 +1,55 @@
+body {
+	background-color: #FFFFFF;
+	transition: background 0.3s ease;
+}
+h1 {
+	font-family: "Orbitron", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}
+.poppins {
+	font-family: "Poppins", sans-serif;
+  	font-style: normal;
+}
+.inter {
+	font-family: "Inter", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-variation-settings:
+		"slnt" 0;
+}
+
+.circle {
+ 	grid-template-areas: "layer";
+ 	--radius: 170px;
+ width: calc(2 * var(--radius));
+ height: calc(2 * var(--radius));
+}
+.stat {
+ grid-area: layer;
+ --d: calc(var(--i) / var(--total));
+ --r-offset: -0.25turn;
+ --r-amount: 1turn;
+ --r: calc((var(--r-amount) * var(--d)) + var(--r-offset));
+ --transform: rotate(var(--r)) translate(var(--radius))
+   rotate(calc(-1 * var(--r)));
+ transform: var(--transform);
+}
+@media (min-width: 1024px) {
+	body {
+		background-color: #B479FF;
+	}
+	.circle {
+	 --radius: 300px;
+	}
+}
+@media (max-width: 640px) {
+	.circle {
+		width: 100% !important;
+		height: auto !important;
+	}
+	.stat {
+		transform: none !important;
+	}
+}
