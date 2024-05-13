@@ -62,7 +62,7 @@ a {
   position: relative;
   display: block;
   overflow: hidden;
-  @include size(100%, $btn-height);
+//   @include size(100%, $btn-height);
   max-width: $btn-width;
   margin: 1rem auto;
   text-transform: uppercase;
@@ -70,8 +70,8 @@ a {
 }
 
 .btn-0 {
-  $btn-color: random-color($max:200);
-  $btn-color-dark: shade($btn-color, 40%);
+//   $btn-color: random-color($max:200);
+//   $btn-color-dark: shade($btn-color, 40%);
   color: tint($btn-color);
 
   &:before {
