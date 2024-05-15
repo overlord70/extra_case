@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Space%20Grotesk:500|Space%20Grotesk:400');
+
+body {
+  font-family: 'Space Grotesk';
+  background-color: black;
+  font-weight: 500;
+  color: white;
+  font-size: 5rem;
+  margin: 0
+}
+
+#container {
+  padding: 10rem;
+  box-sizing: border-box;
+}
+.blur-word {
+  filter: blur(20px);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+body {
+  height: 4000px;
+  display: flex;
+  flex-direction: column;
+  
+}
